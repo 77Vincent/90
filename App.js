@@ -3,6 +3,7 @@
 import React from "react";
 import { Text, View, TextInput, LayoutAnimation } from "react-native";
 import globalStyles from "./src/globalStyles.js";
+import "./src/AppWelcome.js"
 
 export default class App extends React.Component {
   state = {
