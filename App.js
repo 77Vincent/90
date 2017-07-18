@@ -1,18 +1,30 @@
 "use strict";
 
 import React from "react";
-import { Text, View, TextInput, LayoutAnimation } from "react-native";
-import globalStyles from "./src/globalStyles.js";
-import "./src/AppWelcome.js"
+import { Text, View, TextInput, LayoutAnimation, StyleSheet } from "react-native";
+
+class welcome extends React.Component {
+  render() {
+
+  }
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+  },
+  content: {
+    flex: 1 
+  },
+  input: {
+    height: 40,
+    backgroundColor: "gray"
+  }
+});
 
 export default class App extends React.Component {
   state = {
-  }
-
-  styles = {
-    pickContainer: {
-      flex: 4
-    },
   }
 
   randomColor(min, max) {
@@ -28,10 +40,12 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <View style={[globalStyles.container]}>
-        <View style={globalStyles.content}></View>
+      <View style={[styles.container]}>
+        <View style={styles.content}></View>
 
-        <Text style={globalStyles.logo}>Instant</Text>
+        <View style={{justifyContent: "center", padding: 10, alignItems: "center"}}>
+          <Text style={{fontWeight: "bold", fontSize: 24}}>Instant</Text>
+        </View>
       </View>
     );
   }
