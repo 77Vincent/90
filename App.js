@@ -1,13 +1,14 @@
 "use strict";
 
 import React from "react";
-import { Text, View, TextInput, LayoutAnimation, StyleSheet } from "react-native";
-
-class welcome extends React.Component {
-  render() {
-
-  }
-}
+import {StackNavigator} from "react-navigation";
+import { 
+  Text, 
+  View, 
+  TextInput, 
+  LayoutAnimation, 
+  StyleSheet 
+} from "react-native";
 
 const styles = StyleSheet.create({
   container: {
@@ -23,30 +24,34 @@ const styles = StyleSheet.create({
   }
 });
 
-export default class App extends React.Component {
-  state = {
-  }
-
-  randomColor(min, max) {
-    var arr = [];
-
-    for (var i = 0; i < 3; i++) {
-      var result = (Math.floor(Math.random() * (max - min + 1)) + min).toString(16);
-      arr.push(result);
-    }
-    
-    return `#${arr.join("")}`;
-  }
+class WelcomeComponent extends React.Component {
+  static navigationOptions = {
+    title: "Get ready",
+  };
 
   render() {
-    return (
-      <View style={[styles.container]}>
-        <View style={styles.content}></View>
+    const { navigate } = this.props.navigation;
 
-        <View style={{justifyContent: "center", padding: 10, alignItems: "center"}}>
-          <Text style={{fontWeight: "bold", fontSize: 24}}>Instant</Text>
-        </View>
+    return (
+      <View style={{flex: 1, justifyContent: "center", alignItems: "center", backgroundColor: "red"}}>
+        <Text>Instant</Text>
       </View>
     );
   }
 }
+
+const App = StackNavigator({
+  Home: {screen: WelcomeComponent}
+});
+
+class LogoComponent extends React.Component {
+  render() {
+    return (
+      <View style={{justifyContent: "center", padding: 10, alignItems: "center"}}>
+        <Text style={{fontWeight: "bold", fontSize: 24}}>Instant</Text>
+      </View>
+    );
+  }
+}
+
+export default App;
