@@ -1,10 +1,11 @@
 "use strict";
 
 import React from "react";
-import {StackNavigator} from "react-navigation";
+import { StackNavigator } from "react-navigation";
 import { 
   Text, 
   View, 
+  Button,
   TextInput, 
   LayoutAnimation, 
   StyleSheet 
@@ -24,7 +25,7 @@ const styles = StyleSheet.create({
   }
 });
 
-class WelcomeComponent extends React.Component {
+class LandingComponent extends React.Component {
   static navigationOptions = {
     title: "Get ready",
   };
@@ -33,15 +34,36 @@ class WelcomeComponent extends React.Component {
     const { navigate } = this.props.navigation;
 
     return (
+      <View style={{flex: 1, justifyContent: "center", alignItems: "center", backgroundColor: "navy"}}>
+        <Text>Choose your color</Text>
+      </View>
+    );
+  }
+}
+
+class WelcomeComponent extends React.Component {
+  static navigationOptions = {
+    title: "Welcome",
+  };
+
+  render() {
+    const { navigate } = this.props.navigation;
+
+    return (
       <View style={{flex: 1, justifyContent: "center", alignItems: "center", backgroundColor: "red"}}>
         <Text>Instant</Text>
+        <Button
+          onPress = {() => navigate("Landing")}
+          title = "Go to choose your color"
+        />
       </View>
     );
   }
 }
 
 const App = StackNavigator({
-  Home: {screen: WelcomeComponent}
+  Home: {screen: WelcomeComponent},
+  Landing: {screen: LandingComponent}
 });
 
 class LogoComponent extends React.Component {
